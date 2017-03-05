@@ -2,11 +2,18 @@ package com.zlsadesign.stackulator;
 
 import android.util.Log;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 import org.apfloat.Apfloat;
 
+@JsonObject
 public class StackValue extends AbstractStackValue {
 
+  @JsonField(name = "stack", typeConverter = ApfloatConverter.class)
   private Apfloat value;
+
+  public StackValue() {
+  }
 
   public StackValue(Apfloat value) {
     this.setValue(value);

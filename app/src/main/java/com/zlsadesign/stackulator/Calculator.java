@@ -2,6 +2,9 @@ package com.zlsadesign.stackulator;
 
 import android.util.Log;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 import org.apfloat.Apfloat;
 import org.apfloat.ApfloatMath;
 import org.apfloat.OverflowException;
@@ -9,9 +12,11 @@ import org.apfloat.OverflowException;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonObject
 public class Calculator {
 
-  private List<StackValue> stack = new ArrayList<>();
+  @JsonField(name = "stack")
+  List<StackValue> stack = new ArrayList<>();
 
   public Calculator() {
 

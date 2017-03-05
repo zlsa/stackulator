@@ -8,13 +8,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.bluelinelabs.logansquare.LoganSquare;
+
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-  private Calculator calculator = new Calculator();
-  private CalculatorManager calculator_manager = new CalculatorManager(this.calculator);
+  private CalculatorManager calculator_manager;
 
   @BindView(R.id.stack_frame)
   FrameLayout stack_frame;
@@ -26,15 +29,42 @@ public class MainActivity extends AppCompatActivity {
   private KeypadFragment keypad_fragment;
 
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+  protected void onCreate(Bundle state) {
+    super.onCreate(state);
 
     setContentView(R.layout.activity_main);
 
     ButterKnife.bind(this);
 
+    if(state != null) {
+
+      if(state.containsKey("calculator_manager")) {
+        try {
+          this.calculator_manager = LoganSquare.parse(state.getString("calculator_manager"), CalculatorManager.class);
+        } catch(IOException e) {
+          Log.w("MainActivity", "IOException while parsing\n" + e);
+        }
+      }
+
+    } else {
+      this.calculator_manager = new CalculatorManager(new Calculator());
+    }
+
     this.initKeypad();
     this.initStack();
+  }
+
+  @Override
+  public void onSaveInstanceState(Bundle out) {
+
+    try {
+      out.putString("calculator_manager", LoganSquare.serialize(this.calculator_manager));
+    } catch(IOException e) {
+      Log.w("MainActivity", "IOException while serializing\n" + e);
+    }
+
+    // call superclass to save any view hierarchy
+    super.onSaveInstanceState(out);
   }
 
   private void initStack() {

@@ -1,11 +1,20 @@
 package com.zlsadesign.stackulator;
 
+import android.os.Bundle;
+
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
 import org.apfloat.Apfloat;
 
+@JsonObject
 public class StackValueEditor extends AbstractStackValue {
 
-  private String value = "";
-  private boolean dirty = false;
+  @JsonField(name = "value")
+  String value = "";
+
+  @JsonField(name = "dirty")
+  boolean dirty = false;
 
   public StackValueEditor() {
   }

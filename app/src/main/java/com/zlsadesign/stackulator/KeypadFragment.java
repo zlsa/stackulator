@@ -35,6 +35,7 @@ public class KeypadFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
     View view = inflater.inflate(R.layout.fragment_keypad, container, false);
 
+    ButterKnife.setDebug(true);
     ButterKnife.bind(this, view);
 
     this.initViewPager();

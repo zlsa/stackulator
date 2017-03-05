@@ -1,14 +1,26 @@
 package com.zlsadesign.stackulator;
 
+import android.os.Bundle;
 import android.util.Log;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
+@JsonObject
 public class CalculatorManager {
 
-  private Calculator calculator;
+  @JsonField(name = "calculator")
+  Calculator calculator;
 
-  private boolean editing = false;
+  @JsonField(name = "editing")
+  boolean editing = false;
 
-  private StackValueEditor edit_value = new StackValueEditor();
+  @JsonField(name = "edit_value")
+  StackValueEditor edit_value = new StackValueEditor();
+
+  public CalculatorManager() {
+
+  }
 
   public CalculatorManager(Calculator calculator) {
     this.calculator = calculator;
