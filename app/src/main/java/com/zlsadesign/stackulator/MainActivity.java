@@ -1,5 +1,7 @@
 package com.zlsadesign.stackulator;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -47,18 +49,41 @@ public class MainActivity extends AppCompatActivity {
       }
 
     } else {
-      this.calculator_manager = new CalculatorManager(new Calculator());
+      this.calculator_manager = this.restoreCalculatorManager();
     }
 
     this.initKeypad();
     this.initStack();
   }
 
+  private void saveCalculatorManager(String calculator_manager) {
+    SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+    SharedPreferences.Editor editor = prefs.edit();
+    editor.putString("calculator_manager", calculator_manager);
+    editor.apply();
+  }
+
+  private CalculatorManager restoreCalculatorManager() {
+    SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
+
+    if(prefs.contains("calculator_manager")) {
+      try {
+        return LoganSquare.parse(prefs.getString("calculator_manager", null), CalculatorManager.class);
+      } catch(IOException ignored) {
+
+      }
+    }
+
+    return new CalculatorManager(new Calculator());
+  }
+
   @Override
   public void onSaveInstanceState(Bundle out) {
 
     try {
-      out.putString("calculator_manager", LoganSquare.serialize(this.calculator_manager));
+      String json = LoganSquare.serialize(this.calculator_manager);
+      out.putString("calculator_manager", json);
+      this.saveCalculatorManager(json);
     } catch(IOException e) {
       Log.w("MainActivity", "IOException while serializing\n" + e);
     }
