@@ -1,5 +1,11 @@
 package com.zlsadesign.stackulator;
 
+import android.util.Log;
+
+import org.apfloat.Apfloat;
+import org.apfloat.ApfloatMath;
+import org.apfloat.OverflowException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +19,7 @@ public class Calculator {
 
   // Push/Pop operations
 
-  private StackValue pop() throws CalculatorException {
+  public StackValue pop() throws CalculatorException {
     this.requiresSize(1);
 
     int index = this.stack.size() - 1;
@@ -25,7 +31,15 @@ public class Calculator {
     return value;
   }
 
-  private void push(StackValue value) {
+  public StackValue peek() throws CalculatorException {
+    this.requiresSize(1);
+
+    int index = this.stack.size() - 1;
+
+    return this.stack.get(index);
+  }
+
+  public void push(StackValue value) {
     this.stack.add(value);
   }
 
@@ -34,6 +48,18 @@ public class Calculator {
   }
 
   // Actual operations start here.
+  // # `SWAP`
+
+  private void swap() throws CalculatorException {
+    this.requiresSize(2);
+
+    StackValue x = this.pop();
+    StackValue y = this.pop();
+
+    this.push(x);
+    this.push(y);
+  }
+
   // # `ADD`
 
   private void add() throws CalculatorException {
@@ -42,7 +68,13 @@ public class Calculator {
     StackValue x = this.pop();
     StackValue y = this.pop();
 
-    this.push(new StackValue(x.getValue().add(y.getValue())));
+    try {
+      this.push(new StackValue(x.getValue().add(y.getValue())));
+    } catch(OverflowException e) {
+      this.push(y);
+      this.push(x);
+      throw new CalculatorException(CalculatorException.OVERFLOW);
+    }
   }
 
   // # `SUBTRACT`
@@ -64,7 +96,14 @@ public class Calculator {
     StackValue x = this.pop();
     StackValue y = this.pop();
 
-    this.push(new StackValue(x.getValue().multiply(y.getValue())));
+    try {
+      this.push(new StackValue(x.getValue().multiply(y.getValue())));
+    } catch(OverflowException e) {
+      this.push(y);
+      this.push(x);
+      throw new CalculatorException(CalculatorException.OVERFLOW);
+    }
+
   }
 
   // # `DIVIDE`
@@ -75,7 +114,36 @@ public class Calculator {
     StackValue x = this.pop();
     StackValue y = this.pop();
 
-    this.push(new StackValue(y.getValue().divide(x.getValue())));
+    try {
+      this.push(new StackValue(y.getValue().divide(x.getValue())));
+    } catch(OverflowException e) {
+      this.push(y);
+      this.push(x);
+      throw new CalculatorException(CalculatorException.OVERFLOW);
+    } catch(ArithmeticException e) {
+      this.push(y);
+      this.push(x);
+      throw new CalculatorException(CalculatorException.DIVIDE_BY_ZERO);
+
+    }
+  }
+
+  // # `POWER`
+
+  private void power() throws CalculatorException {
+    this.requiresSize(2);
+
+    StackValue x = this.pop();
+    StackValue y = this.pop();
+
+    try {
+      this.push(new StackValue(ApfloatMath.pow(x.getValue(), y.getValue())));
+    } catch(OverflowException e) {
+      this.push(y);
+      this.push(x);
+      throw new CalculatorException(CalculatorException.OVERFLOW);
+    }
+
   }
 
   // # Performs the operation.
@@ -84,6 +152,22 @@ public class Calculator {
 
     switch(operation.getOperation()) {
       case Operation.NONE:
+        break;
+
+
+      case Operation.PUSH:
+        this.push(operation.getValue());
+        break;
+
+
+      case Operation.SWAP:
+        this.swap();
+        break;
+      case Operation.DROP:
+        this.pop();
+        break;
+      case Operation.DUPLICATE:
+        this.push(this.peek());
         break;
 
 
@@ -102,15 +186,37 @@ public class Calculator {
         break;
 
 
-      case Operation.PUSH:
-        this.push(operation.getValue());
-        break;
-      case Operation.DROP:
-        this.pop();
+      case Operation.INVERT:
+        this.push("-1");
+        this.operation(Operation.MULTIPLY);
         break;
 
+
+      case Operation.RECIPROCAL:
+        this.push("1");
+        this.operation(Operation.SWAP);
+        this.operation(Operation.DIVIDE);
+        break;
+      case Operation.SQUARE:
+        this.push("2");
+        try {
+          this.operation(Operation.POWER);
+        } catch(CalculatorException e) {
+          // Clean up our mess
+          this.pop();
+          throw e;
+        }
+        break;
+
+
+      case Operation.POWER:
+        this.power();
+        break;
+
+
       default:
-        throw new RuntimeException("Operation not supported");
+        Log.w("Calculator", "Operation not supported");
+        break;
     }
 
   }
@@ -133,7 +239,7 @@ public class Calculator {
     }
   }
 
-  public StackValue get(int position) throws CalculatorException {
+  public AbstractStackValue get(int position) throws CalculatorException {
     this.requiresSize(position + 1);
 
     return this.stack.get(position);

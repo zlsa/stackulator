@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!--
   <color name="background">#303030</color>
 
-  <!--<color name="secondary_background">#383838</color>-->
   <color name="background_secondary">#363636</color>
 
   <color name="transparent">#00000000</color>
@@ -21,4 +21,40 @@
 
   <color name="text_primary">#FFFFFF</color>
   <color name="text_secondary">#80FFFFFF</color>
+
+  -->
+  <color name="primary">#FAFAFA</color>
+  <color name="primary_dark">#E8E8E8</color>
+  <color name="accent">#FF5722</color>
+
+  <color name="background">#FAFAFA</color>
+
+  <color name="background_secondary">#F4F4F4</color>
+
+  <color name="transparent">#00000000</color>
+  <color name="pane_covered">#80000000</color>
+
+  <color name="ripple">#40000000</color>
+
+  <color name="statusbar">@color/accent</color>
+
+  <color name="black">#000000</color>
+
+  <color name="white">#FFFFFF</color>
+
+  <color name="text_primary">#DD000000</color>
+  <color name="text_secondary">#88000000</color>
+
+  <color name="text_operator">#60000000</color>
+
+  <color name="stack_item_text">#30000000</color>
+
+  <color name="stack_item_top_background">#EEEEEE</color>
+  <color name="stack_item_top_minus_one_background">#F5F5F5</color>
+
+  <color name="stack_item_top_text">#7A000000</color>
+  <color name="stack_item_top_minus_one_text">#66000000</color>
+
+  <color name="stack_item_editing_background">#E0E0E0</color>
+  <color name="stack_item_editing_text">@color/black</color>
 </resources>

@@ -7,19 +7,29 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class KeypadFragment extends Fragment {
 
+  private static String NUMBERS = "0123456789";
+
   @BindView(R.id.viewpager)
   ViewPager pager;
 
   KeypadAdapter adapter;
+
+  private CalculatorManager calculator_manager;
+
+  public void setCalculatorManager(CalculatorManager calculator_manager) {
+    this.calculator_manager = calculator_manager;
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
@@ -36,12 +46,63 @@ public class KeypadFragment extends Fragment {
     this.adapter = new KeypadAdapter(getFragmentManager());
     this.pager.setAdapter(this.adapter);
     this.pager.setPageTransformer(false, new KeypadTransformer());
+  }
 
-    //this.viewpager.;
-    /*
-    this.pane_layout.setSliderFadeColor(getResources().getColor(R.color.transparent));
-    this.pane_layout.setCoveredFadeColor(getResources().getColor(R.color.accent));
-     */
+  public void onButtonClick(View view) {
+    String tag = view.getTag().toString();
+
+    try {
+      this.handleButton(tag);
+    } catch(CalculatorException e) {
+      Toast.makeText(getContext(), e.toString(getContext()), Toast.LENGTH_LONG).show();
+    }
+
+  }
+
+  private void handleButton(String tag) throws CalculatorException {
+
+    Log.d("KeypadFragment", "tag: " + tag);
+
+    int type = Operation.toOperationType(tag);
+
+    switch(type) {
+
+      case Operation.NONE:
+      case Operation.PUSH:
+        this.handleEdit(tag);
+        break;
+
+      default:
+        this.calculator_manager.operation(type);
+
+    }
+
+  }
+
+  private void handleEdit(String tag) throws CalculatorException {
+
+    switch(tag) {
+      case "push":
+        this.calculator_manager.push();
+        break;
+      case "backspace":
+        this.calculator_manager.backspace();
+        break;
+      case "edit":
+        this.calculator_manager.toggleEdit();
+        break;
+      case ".":
+        this.calculator_manager.append(".");
+        break;
+      case "invert":
+        this.calculator_manager.invert();
+        break;
+    }
+
+    if(NUMBERS.contains(tag)) {
+      this.calculator_manager.append(tag);
+    }
+
   }
 
   private class KeypadAdapter extends FragmentStatePagerAdapter {
@@ -83,5 +144,6 @@ public class KeypadFragment extends Fragment {
     }
 
   }
+
 }
 

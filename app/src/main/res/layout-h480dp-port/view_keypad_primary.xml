@@ -15,8 +15,6 @@
   <LinearLayout
     android:orientation="horizontal"
 
-    android:clipToPadding="false"
-
     android:layout_width="match_parent"
     android:layout_height="0dp"
 
@@ -38,13 +36,13 @@
     <Button
       android:text="@string/operation_reciprocal_symbol"
       android:tag="reciprocal"
-      style="@style/AppTheme.ButtonSecondary.Horizontal"
+      style="@style/AppTheme.ButtonSecondary.Horizontal.NoCase"
       />
 
     <Button
       android:text="@string/operation_square_symbol"
       android:tag="square"
-      style="@style/AppTheme.ButtonSecondary.Horizontal"
+      style="@style/AppTheme.ButtonSecondary.Horizontal.NoCase"
       />
 
   </LinearLayout>
@@ -191,7 +189,7 @@
 
       <Button
         android:text="@string/number_invert_symbol"
-        android:tag="-"
+        android:tag="invert"
         style="@style/AppTheme.ButtonPrimary.Symbol"
         />
 
@@ -208,12 +206,14 @@
       <ImageButton
         android:src="@drawable/ic_edit"
         android:tag="edit"
-        style="@style/AppTheme.ButtonOperator"
+        android:alpha="0.3"
+        style="@style/AppTheme.ButtonOperator.Symbol"
         />
 
       <ImageButton
         android:src="@drawable/ic_backspace"
         android:tag="backspace"
+        android:alpha="0.3"
         style="@style/AppTheme.ButtonOperator.Symbol"
         />
 

@@ -1,15 +1,15 @@
 <resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primary_dark</item>
     <item name="colorAccent">@color/accent</item>
 
-    <item name="colorControlHighlight">@color/ripple_primary</item>
+    <item name="colorControlHighlight">@color/ripple</item>
 
-    <item name="android:statusBarColor">@color/black</item>
+    <item name="android:statusBarColor">@color/statusbar</item>
   </style>
 
   <style name="AppTheme.Button" parent="@android:style/Widget.Button">
@@ -32,6 +32,8 @@
     <item name="android:textColor">@color/text_primary</item>
 
     <item name="android:textAllCaps">true</item>
+
+    <item name="android:onClick">onButtonClick</item>
   </style>
 
   <!-- Primary button; e.g. numbers -->
@@ -60,8 +62,8 @@
     <item name="android:clipToPadding">false</item>
 
     <item name="android:textStyle">normal</item>
-    <item name="android:tint">@color/text_primary</item>
-    <item name="android:textColor">@color/text_primary</item>
+    <item name="android:tint">@color/white</item>
+    <item name="android:textColor">@color/white</item>
   </style>
 
   <style name="AppTheme.ButtonAccent.Symbol" parent="@style/AppTheme.ButtonAccent">
@@ -74,13 +76,12 @@
   <style name="AppTheme.ButtonSecondary" parent="@style/AppTheme.Button">
     <item name="android:stateListAnimator">@null</item>
 
-    <item name="android:elevation">@dimen/secondary_elevation</item>
-    <item name="elevation">@dimen/secondary_elevation</item>
-
     <item name="android:background">@color/background_secondary</item>
     <item name="background">@color/background_secondary</item>
 
     <item name="android:foreground">?attr/selectableItemBackground</item>
+
+    <item name="android:clipToPadding">false</item>
 
     <item name="android:textStyle">normal</item>
     <item name="android:tint">@color/text_secondary</item>
@@ -99,12 +100,20 @@
     <item name="android:textAllCaps">false</item>
   </style>
 
+  <style name="AppTheme.ButtonSecondary.NoCase" parent="@style/AppTheme.ButtonSecondary">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="AppTheme.ButtonSecondary.Horizontal.NoCase" parent="@style/AppTheme.ButtonSecondary.Horizontal">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
   <!-- Used for arithmetic operation buttons -->
 
   <style name="AppTheme.ButtonOperator" parent="@style/AppTheme.Button">
     <item name="android:textStyle">bold</item>
-    <item name="android:tint">@color/text_secondary</item>
-    <item name="android:textColor">@color/text_secondary</item>
+    <item name="android:tint">@color/text_operator</item>
+    <item name="android:textColor">@color/text_operator</item>
   </style>
 
   <style name="AppTheme.ButtonOperator.Symbol" parent="@style/AppTheme.ButtonOperator">

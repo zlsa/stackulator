@@ -40,4 +40,14 @@
   <string name="edit_toggle">Edit</string>
   <string name="edit_backspace">Backspace</string>
   <string name="edit_push">Push</string>
+
+  <string name="identifier_none" />
+  <string name="identifier_top">x</string>
+  <string name="identifier_top_minus_one">y</string>
+
+  <string name="error_none">No error occured. This shouldn\'t happen.</string>
+  <string name="error_stack_empty">The stack doesn\'t contain enough values.</string>
+  <string name="error_bad_number">That number isn\'t valid.</string>
+  <string name="error_overflow">Resulting number too large</string>
+  <string name="error_divide_by_zero">Division by zero</string>
 </resources>
