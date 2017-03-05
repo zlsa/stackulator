@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+
+  android:id="@+id/keypad_main"
+
+  android:orientation="horizontal"
+
+  android:background="@color/background"
+
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:clipToPadding="false"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+
+    android:layout_weight="1"
+    >
+
+    <Button
+      android:text="@string/operation_swap"
+      android:tag="swap"
+      style="@style/AppTheme.ButtonSecondary"
+      />
+
+    <Button
+      android:text="@string/operation_drop"
+      android:tag="drop"
+      style="@style/AppTheme.ButtonSecondary"
+      />
+
+    <Button
+      android:text="@string/operation_reciprocal_symbol"
+      android:tag="reciprocal"
+      style="@style/AppTheme.ButtonSecondary"
+      />
+
+    <Button
+      android:text="@string/operation_square_symbol"
+      android:tag="square"
+      style="@style/AppTheme.ButtonSecondary"
+      />
+
+  </LinearLayout>
+
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    >
+
+    <Button
+      android:text="@string/operation_add_symbol"
+      android:tag="add"
+      style="@style/AppTheme.ButtonOperator.Symbol"
+      />
+
+    <Button
+      android:text="@string/operation_subtract_symbol"
+      android:tag="subtract"
+      style="@style/AppTheme.ButtonOperator.Symbol"
+      />
+
+    <Button
+      android:text="@string/operation_multiply_symbol"
+      android:tag="multiply"
+      style="@style/AppTheme.ButtonOperator.Symbol"
+      />
+
+    <Button
+      android:text="@string/operation_divide_symbol"
+      android:tag="divide"
+      style="@style/AppTheme.ButtonOperator.Symbol"
+      />
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    >
+
+    <Button
+      android:text="@string/number_7"
+      android:tag="7"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_4"
+      android:tag="4"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_1"
+      android:tag="1"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_0"
+      android:tag="0"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    >
+
+    <Button
+      android:text="@string/number_8"
+      android:tag="8"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_5"
+      android:tag="5"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_2"
+      android:tag="2"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_decimal_symbol"
+      android:tag="."
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    >
+
+    <Button
+      android:text="@string/number_9"
+      android:tag="9"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_6"
+      android:tag="6"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_3"
+      android:tag="3"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+    <Button
+      android:text="@string/number_invert_symbol"
+      android:tag="-"
+      style="@style/AppTheme.ButtonPrimary.Symbol"
+      />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:orientation="vertical"
+
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    >
+
+    <ImageButton
+      android:src="@drawable/ic_edit"
+      android:tag="edit"
+      style="@style/AppTheme.ButtonOperator"
+      />
+
+    <ImageButton
+      android:src="@drawable/ic_backspace"
+      android:tag="backspace"
+      style="@style/AppTheme.ButtonOperator.Symbol"
+      />
+
+    <ImageButton
+      android:src="@drawable/ic_push"
+      android:tag="push"
+
+      android:layout_weight="2"
+      style="@style/AppTheme.ButtonAccent.Symbol"
+      />
+
+  </LinearLayout>
+
+</LinearLayout>

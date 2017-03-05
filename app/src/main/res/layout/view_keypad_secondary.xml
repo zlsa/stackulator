@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+
+  android:id="@+id/keypad_secondary"
+
+  android:orientation="horizontal"
+
+  android:layout_width="0dp"
+  android:layout_height="match_parent"
+
+  android:layout_weight="1"
+
+  android:elevation="16dp"
+
+  android:clipToPadding="false"
+
+  android:background="@color/accent"
+  >
+
+</FrameLayout>
+

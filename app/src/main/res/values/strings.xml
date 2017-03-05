@@ -1,0 +1,43 @@
+<resources>
+  <string name="app_name">Stackulator</string>
+
+  <string name="operation_add_symbol">+</string>
+  <string name="operation_subtract_symbol">-</string>
+  <string name="operation_multiply_symbol">×</string>
+  <string name="operation_divide_symbol">÷</string>
+
+  <string name="operation_add">Add</string>
+  <string name="operation_subtract">Subtract</string>
+  <string name="operation_multiply">Multiply</string>
+  <string name="operation_divide">Divide</string>
+
+  <string name="operation_square_symbol">x²</string>
+  <string name="operation_reciprocal_symbol">1/x</string>
+
+  <string name="operation_square">Square</string>
+  <string name="operation_reciprocal">Reciprocal</string>
+
+  <string name="operation_swap">Swap</string>
+  <string name="operation_drop">Drop</string>
+
+  <string name="number_0">0</string>
+  <string name="number_1">1</string>
+  <string name="number_2">2</string>
+  <string name="number_3">3</string>
+  <string name="number_4">4</string>
+  <string name="number_5">5</string>
+  <string name="number_6">6</string>
+  <string name="number_7">7</string>
+  <string name="number_8">8</string>
+  <string name="number_9">9</string>
+
+  <string name="number_decimal_symbol">.</string>
+  <string name="number_invert_symbol">±</string>
+
+  <string name="number_decimal">Decimal</string>
+  <string name="number_invert">Invert</string>
+
+  <string name="edit_toggle">Edit</string>
+  <string name="edit_backspace">Backspace</string>
+  <string name="edit_push">Push</string>
+</resources>
