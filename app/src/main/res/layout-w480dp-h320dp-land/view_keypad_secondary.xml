@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+
+  android:id="@+id/keypad_secondary"
+
+  android:orientation="vertical"
+
+  android:clipToPadding="false"
+
+  android:background="@color/keypad_secondary_background"
+
+  android:paddingStart="@dimen/keypad_slider_size"
+
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+
+  android:clickable="true"
+  >
+
+  <LinearLayout
+    android:orientation="horizontal"
+
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+
+    android:layout_weight="0.8"
+    >
+
+    <Button
+      android:text="@string/operation_pi"
+      android:tag="pi"
+      style="@style/AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal"
+      />
+
+    <Button
+      android:text="@string/operation_euler"
+      android:tag="euler"
+      style="@style/AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal"
+      />
+
+    <Button
+      android:text="@string/operation_root_symbol"
+      android:tag="root"
+      style="@style/AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal.NoCase"
+      />
+
+    <Button
+      android:text="@string/operation_power_symbol"
+      android:tag="power"
+      style="@style/AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal.NoCase"
+      />
+
+  </LinearLayout>
+
+  <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="horizontal"
+
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+
+    android:layout_weight="4"
+    >
+
+    <LinearLayout
+      android:orientation="vertical"
+
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      >
+
+      <Button
+        android:text="@string/operation_sin"
+        android:tag="sin"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_sin_inverse"
+        android:tag="asin"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_natural_log_symbol"
+        android:tag="natural_log"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <ImageButton
+        android:src="@drawable/ic_undo"
+        android:tag="undo"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:orientation="vertical"
+
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      >
+
+      <Button
+        android:text="@string/operation_cos"
+        android:tag="cos"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_cos_inverse"
+        android:tag="acos"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_log_symbol"
+        android:tag="log"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <ImageButton
+        android:src="@drawable/ic_redo"
+        android:tag="redo"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:orientation="vertical"
+
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      >
+
+      <Button
+        android:text="@string/operation_tan"
+        android:tag="tan"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_tan_inverse"
+        android:tag="atan"
+        style="@style/AppTheme.Secondary.ButtonPrimary.NoCase"
+        />
+
+      <Button
+        android:text="@string/operation_factorial_symbol"
+        android:tag="factorial"
+        style="@style/AppTheme.Secondary.ButtonPrimary.Symbol"
+        />
+
+      <Button
+        android:text="@string/operation_modulo_symbol"
+        android:tag="modulo"
+        style="@style/AppTheme.Secondary.ButtonPrimary.Symbol"
+        />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</LinearLayout>

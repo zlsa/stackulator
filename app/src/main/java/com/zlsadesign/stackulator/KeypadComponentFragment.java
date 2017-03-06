@@ -6,7 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class KeypadComponentFragment extends Fragment {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class KeypadComponentFragment extends Fragment implements View.OnClickListener {
+
+  private KeypadFragment fragment;
+
+  @BindView(R.id.keypad)
+  View keypad;
+
+  @BindView(R.id.scrim)
+  View scrim;
 
   private int position = 0;
 
@@ -14,15 +25,20 @@ public class KeypadComponentFragment extends Fragment {
 
   }
 
-  public KeypadComponentFragment(int position) {
+  public KeypadComponentFragment(KeypadFragment fragment, int position) {
+    this.fragment = fragment;
     this.position = position;
+  }
+
+  public void setEnabled(boolean enabled) {
+    this.scrim.setClickable(!enabled);
   }
 
   private int getLayout() {
     if(this.position == 0) {
-      return R.layout.view_keypad_primary;
+      return R.layout.view_keypad_primary_wrapper;
     } else {
-      return R.layout.view_keypad_secondary;
+      return R.layout.view_keypad_secondary_wrapper;
     }
   }
 
@@ -42,7 +58,17 @@ public class KeypadComponentFragment extends Fragment {
 
     ViewGroup view = (ViewGroup) inflater.inflate(this.getLayout(), container, false);
 
+    ButterKnife.bind(this, view);
+
+    this.keypad.setOnClickListener(this);
+    this.scrim.setOnClickListener(this);
+
     return view;
+  }
+
+  @Override
+  public void onClick(View v) {
+    this.fragment.swap();
   }
 
 }

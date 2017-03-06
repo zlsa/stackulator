@@ -67,9 +67,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
   }
 
   private CalculatorManager restoreCalculatorManager() {
-    return new CalculatorManager(new Calculator());
 
-    /*
     SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
 
     if(prefs.contains("calculator_manager")) {
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
       }
     }
 
-    return new CalculatorManager(new Calculator());*/
+    return new CalculatorManager(new Calculator());
   }
 
   @Override

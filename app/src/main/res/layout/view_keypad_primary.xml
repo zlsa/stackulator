@@ -2,7 +2,7 @@
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
 
-  android:id="@+id/keypad_main"
+  android:id="@+id/keypad_primary"
 
   android:orientation="horizontal"
 

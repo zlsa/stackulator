@@ -117,6 +117,11 @@ public class CalculatorManager {
       case Operation.INVERT:
         this.invert();
         break;
+      case Operation.POP:
+        if(this.isEditing()) {
+          this.finishEdit();
+          break;
+        }
       default:
         this.stopEdit();
         this.calculator.operation(operation);

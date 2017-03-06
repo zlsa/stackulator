@@ -5,23 +5,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.SlidingPaneLayout;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class KeypadFragment extends Fragment {
+public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
   private static String NUMBERS = "0123456789";
 
   @BindView(R.id.viewpager)
   ViewPager pager;
+
+  KeypadComponentFragment keypad_primary;
+
+  KeypadComponentFragment keypad_secondary;
 
   KeypadAdapter adapter;
 
@@ -43,9 +44,11 @@ public class KeypadFragment extends Fragment {
   }
 
   private void initViewPager() {
-    this.adapter = new KeypadAdapter(getFragmentManager());
+    this.adapter = new KeypadAdapter(this, getFragmentManager());
     this.pager.setAdapter(this.adapter);
     this.pager.setPageTransformer(false, new KeypadTransformer());
+
+    this.pager.setOnPageChangeListener(this);
   }
 
   public void onButtonClick(View view) {
@@ -105,15 +108,64 @@ public class KeypadFragment extends Fragment {
 
   }
 
+  @Override
+  public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+  }
+
+  @Override
+  public void onPageSelected(int position) {
+
+    if(this.keypad_primary == null || this.keypad_secondary == null) return;
+
+    if(position == 0) {
+      this.keypad_primary.setEnabled(true);
+      this.keypad_secondary.setEnabled(false);
+    } else {
+      this.keypad_primary.setEnabled(false);
+      this.keypad_secondary.setEnabled(true);
+    }
+
+  }
+
+  @Override
+  public void onPageScrollStateChanged(int state) {
+    /*
+    switch(state) {
+      case ViewPager.SCROLL_STATE_DRAGGING:
+      case ViewPager.SCROLL_STATE_SETTLING:
+        recursivelySetEnabled(this.keypad_primary, false);
+        recursivelySetEnabled(this.keypad_secondary, false);
+    }
+    */
+
+  }
+
+  public void swap() {
+    Log.d("KeypadFragment", "item: " + this.pager.getCurrentItem());
+
+    this.pager.setCurrentItem(1 - this.pager.getCurrentItem());
+  }
+
   private class KeypadAdapter extends FragmentStatePagerAdapter {
 
-    public KeypadAdapter(FragmentManager fm) {
+    KeypadFragment keypad;
+
+    public KeypadAdapter(KeypadFragment keypad, FragmentManager fm) {
       super(fm);
+      this.keypad = keypad;
     }
 
     @Override
     public Fragment getItem(int position) {
-      return new KeypadComponentFragment(position);
+      Fragment fragment = new KeypadComponentFragment(keypad, position);
+
+      if(position == 0)
+        keypad_primary = (KeypadComponentFragment) fragment;
+      else
+        keypad_secondary = (KeypadComponentFragment) fragment;
+
+      return fragment;
     }
 
     @Override
@@ -123,6 +175,10 @@ public class KeypadFragment extends Fragment {
 
     @Override
     public float getPageWidth(int position) {
+      if(this.keypad.getView().getWidth() > 480) {
+        return (float) 0.5;
+      }
+
       if(position == 1) return (float) 0.75;
       return (float) 0.95;
     }
