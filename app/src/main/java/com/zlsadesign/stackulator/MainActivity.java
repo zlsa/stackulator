@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -17,7 +16,7 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CalculatorListener {
 
   private CalculatorManager calculator_manager;
 
@@ -38,32 +37,39 @@ public class MainActivity extends AppCompatActivity {
 
     ButterKnife.bind(this);
 
-    if(state != null) {
+    this.calculator_manager = this.restoreCalculatorManager();
 
-      if(state.containsKey("calculator_manager")) {
-        try {
-          this.calculator_manager = LoganSquare.parse(state.getString("calculator_manager"), CalculatorManager.class);
-        } catch(IOException e) {
-          Log.w("MainActivity", "IOException while parsing\n" + e);
-        }
-      }
-
-    } else {
-      this.calculator_manager = this.restoreCalculatorManager();
-    }
+    this.calculator_manager.calculator.setListener(this);
 
     this.initKeypad();
     this.initStack();
   }
 
-  private void saveCalculatorManager(String calculator_manager) {
+  protected void onStop() {
+    super.onStop();
+
+    this.calculator_manager.destroy();
+  }
+
+  private void saveCalculatorManager() {
+    String json = null;
+
+    try {
+      json = LoganSquare.serialize(this.calculator_manager);
+    } catch(IOException ignored) {
+      return;
+    }
+
     SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
     SharedPreferences.Editor editor = prefs.edit();
-    editor.putString("calculator_manager", calculator_manager);
+    editor.putString("calculator_manager", json);
     editor.apply();
   }
 
   private CalculatorManager restoreCalculatorManager() {
+    return new CalculatorManager(new Calculator());
+
+    /*
     SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
 
     if(prefs.contains("calculator_manager")) {
@@ -74,21 +80,13 @@ public class MainActivity extends AppCompatActivity {
       }
     }
 
-    return new CalculatorManager(new Calculator());
+    return new CalculatorManager(new Calculator());*/
   }
 
   @Override
   public void onSaveInstanceState(Bundle out) {
+    this.saveCalculatorManager();
 
-    try {
-      String json = LoganSquare.serialize(this.calculator_manager);
-      out.putString("calculator_manager", json);
-      this.saveCalculatorManager(json);
-    } catch(IOException e) {
-      Log.w("MainActivity", "IOException while serializing\n" + e);
-    }
-
-    // call superclass to save any view hierarchy
     super.onSaveInstanceState(out);
   }
 
@@ -117,7 +115,40 @@ public class MainActivity extends AppCompatActivity {
   public void onButtonClick(View view) {
     this.keypad_fragment.onButtonClick(view);
 
+    this.update();
+  }
+
+  public void setError(CalculatorException e) {
+    this.stack_fragment.setError(e);
+  }
+
+  public void update() {
     this.stack_fragment.update();
+  }
+
+  @Override
+  public void onStackChanged() {
+
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        update();
+      }
+    });
+
+  }
+
+  @Override
+  public void onCalculatorException(final CalculatorException e) {
+
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        update();
+        setError(e);
+      }
+    });
+
   }
 
 }

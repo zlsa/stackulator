@@ -12,13 +12,40 @@
   <string name="operation_divide">Divide</string>
 
   <string name="operation_square_symbol">x²</string>
+  <string name="operation_power_symbol">xʸ</string>
+  <string name="operation_root_symbol">ˣ√</string>
   <string name="operation_reciprocal_symbol">1/x</string>
 
   <string name="operation_square">Square</string>
+  <string name="operation_power">Power</string>
+  <string name="operation_root">Root</string>
   <string name="operation_reciprocal">Reciprocal</string>
 
   <string name="operation_swap">Swap</string>
   <string name="operation_drop">Drop</string>
+
+
+  <string name="operation_sin">sin</string>
+  <string name="operation_sin_inverse">sin⁻¹</string>
+  <string name="operation_cos">cos</string>
+  <string name="operation_cos_inverse">cos⁻¹</string>
+  <string name="operation_tan">tan</string>
+  <string name="operation_tan_inverse">tan⁻¹</string>
+
+
+  <string name="operation_natural_log_symbol">ln</string>
+  <string name="operation_log_symbol">log</string>
+
+  <string name="operation_natural_log">Natural Logarithm</string>
+  <string name="operation_log">Logarithm</string>
+
+
+  <string name="operation_factorial_symbol">!</string>
+  <string name="operation_modulo_symbol">%</string>
+
+  <string name="operation_factorial">Factorial</string>
+  <string name="operation_modulo">Modulo</string>
+
 
   <string name="number_0">0</string>
   <string name="number_1">1</string>
@@ -37,6 +64,9 @@
   <string name="number_decimal">Decimal</string>
   <string name="number_invert">Invert</string>
 
+  <string name="operation_euler">e</string>
+  <string name="operation_pi">π</string>
+
   <string name="edit_toggle">Edit</string>
   <string name="edit_backspace">Backspace</string>
   <string name="edit_push">Push</string>
@@ -46,8 +76,18 @@
   <string name="identifier_top_minus_one">y</string>
 
   <string name="error_none">No error occured. This shouldn\'t happen.</string>
+
   <string name="error_stack_empty">The stack doesn\'t contain enough values.</string>
+
   <string name="error_bad_number">That number isn\'t valid.</string>
-  <string name="error_overflow">Resulting number too large</string>
-  <string name="error_divide_by_zero">Division by zero</string>
+  <string name="error_overflow">Resulting number too large.</string>
+  <string name="error_divide_by_zero">Division by zero.</string>
+  <string name="error_out_of_bounds">Number out of bounds.</string>
+
+  <string name="error_no_more_undo">No more undo steps.</string>
+  <string name="error_no_more_redo">No more redo steps.</string>
+
+  <string name="error_unknown">Internal error occured.</string>
+
+  <string name="value_operation_in_progress">Hold on for a moment...</string>
 </resources>

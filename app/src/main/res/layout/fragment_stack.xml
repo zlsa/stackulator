@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<FrameLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
 
-  android:id="@+id/recyclerview"
-
-  android:scrollbars="vertical"
+  android:id="@+id/root_view"
 
   android:background="@color/background"
 
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  />
+  >
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/recyclerview"
+
+    android:scrollbars="vertical"
+
+    android:background="@color/background"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
+  <TextView
+    android:id="@+id/snackbar_error_message"
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/snackbar_height"
+
+    android:paddingStart="@dimen/snackbar_padding_horizontal"
+    android:paddingEnd="@dimen/snackbar_padding_horizontal"
+
+    android:layout_gravity="bottom"
+
+    android:gravity="center|start"
+
+    android:background="@color/snackbar_background"
+    android:textColor="@color/white"
+    />
+
+</FrameLayout>

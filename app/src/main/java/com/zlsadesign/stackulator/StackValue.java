@@ -5,6 +5,7 @@ import android.util.Log;
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 import org.apfloat.Apfloat;
+import org.apfloat.internal.ApfloatInternalException;
 
 @JsonObject
 public class StackValue extends AbstractStackValue {
@@ -30,8 +31,10 @@ public class StackValue extends AbstractStackValue {
   public void setValue(String value) throws CalculatorException {
 
     try {
-      this.setValue(new Apfloat(value, 32));
+      this.setValue(new Apfloat(value, 16));
     } catch(NumberFormatException e) {
+      throw new CalculatorException(CalculatorException.BAD_NUMBER);
+    } catch(ApfloatInternalException e) {
       throw new CalculatorException(CalculatorException.BAD_NUMBER);
     }
 
@@ -42,9 +45,19 @@ public class StackValue extends AbstractStackValue {
   }
 
   public String toString() {
-    String value = this.value.precision(6).toString(true);
+    String value = "";
 
-    if(value.length() > 12) {
+    if(this.value.size() > 50) {
+      return "way too many digits";
+    }
+
+    try {
+      value = this.value.precision(6).toString(true);
+    } catch(ApfloatInternalException e) {
+      return "way way too many digits";
+    }
+
+    if(value.length() > 16) {
       return this.value.precision(6).toString();
     }
 

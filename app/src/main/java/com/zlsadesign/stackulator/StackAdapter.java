@@ -92,6 +92,11 @@ public class StackAdapter extends RecyclerView.Adapter<StackAdapter.ViewHolder> 
         text_color = R.color.stack_item_editing_text;
       }
 
+      if(value instanceof CalculatorManager.StackValueInProgress) {
+        text_color = R.color.stack_item_in_progress_text;
+        this.value_text.setText(R.string.value_operation_in_progress);
+      }
+
       this.identifier_text.setText(identifier);
 
       this.view.setBackgroundColor(view.getContext().getResources().getColor(background_color));

@@ -17,6 +17,7 @@ public class CalculatorManager {
 
   @JsonField(name = "edit_value")
   StackValueEditor edit_value = new StackValueEditor();
+  private StackValueInProgress in_progress_value = new StackValueInProgress();
 
   public CalculatorManager() {
 
@@ -129,13 +130,17 @@ public class CalculatorManager {
   }
 
   public void operation(String value) throws CalculatorException {
-    this.operation(new Operation(Operation.PUSH, new StackValue(value)));
+    this.operation(Operation.toOperation(value));
   }
 
   public int size() {
     int size = this.calculator.size();
 
     if(this.editing) {
+      size += 1;
+    }
+
+    if(this.calculator.operation_in_progress) {
       size += 1;
     }
 
@@ -147,10 +152,24 @@ public class CalculatorManager {
 
     if(position < this.calculator.size()) {
       return this.calculator.get(position);
+    } else if(position == this.calculator.size() && this.calculator.operation_in_progress) {
+      return this.in_progress_value;
     } else {
       return this.edit_value;
     }
 
   }
 
+  public void destroy() {
+    this.calculator.destroy();
+  }
+
+  class StackValueInProgress extends AbstractStackValue {
+
+    @Override
+    public String toString() {
+      return "";
+    }
+
+  }
 }

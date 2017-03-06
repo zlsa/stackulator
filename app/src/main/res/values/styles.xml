@@ -49,6 +49,10 @@
     <item name="android:textAllCaps">false</item>
   </style>
 
+  <style name="AppTheme.ButtonPrimary.NoCase" parent="@style/AppTheme.ButtonPrimary">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
   <!-- Accent button (very bold! use sparingly) -->
 
   <style name="AppTheme.ButtonAccent" parent="@style/AppTheme.Button">
@@ -83,9 +87,9 @@
 
     <item name="android:clipToPadding">false</item>
 
-    <item name="android:textStyle">normal</item>
-    <item name="android:tint">@color/text_secondary</item>
-    <item name="android:textColor">@color/text_secondary</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:tint">@color/text_operator</item>
+    <item name="android:textColor">@color/text_operator</item>
   </style>
 
   <style name="AppTheme.ButtonSecondary.Horizontal" parent="@style/AppTheme.ButtonSecondary">
@@ -117,6 +121,59 @@
   </style>
 
   <style name="AppTheme.ButtonOperator.Symbol" parent="@style/AppTheme.ButtonOperator">
+    <item name="android:textSize">@dimen/text_size_symbol</item>
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <!-- Secondary keypad -->
+
+  <style name="AppTheme.Secondary.ButtonSecondary" parent="@style/AppTheme.Button">
+    <item name="android:textStyle">normal</item>
+    <item name="android:textColor">@color/keypad_secondary_text_secondary</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonSecondary.Symbol" parent="@style/AppTheme.Secondary.ButtonSecondary">
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">@dimen/text_size_symbol</item>
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonSecondary.Horizontal" parent="@style/AppTheme.Secondary.ButtonSecondary">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:layout_weight">1</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonSecondary.Horizontal.NoCase" parent="@style/AppTheme.Secondary.ButtonSecondary.Horizontal">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal" parent="@style/AppTheme.Secondary.ButtonSecondary.Symbol">
+    <item name="android:layout_width">0dp</item>
+    <item name="android:layout_height">match_parent</item>
+
+    <item name="android:layout_weight">1</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal.NoCase" parent="@style/AppTheme.Secondary.ButtonSecondary.Symbol.Horizontal">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <!-- Secondary keypad primary button -->
+
+  <style name="AppTheme.Secondary.ButtonPrimary" parent="@style/AppTheme.Button">
+    <item name="android:textStyle">normal</item>
+    <item name="android:tint">@color/keypad_secondary_text</item>
+    <item name="android:textColor">@color/keypad_secondary_text</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonPrimary.NoCase" parent="@style/AppTheme.Secondary.ButtonPrimary">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+  <style name="AppTheme.Secondary.ButtonPrimary.Symbol" parent="@style/AppTheme.Secondary.ButtonPrimary">
+    <item name="android:textStyle">bold</item>
     <item name="android:textSize">@dimen/text_size_symbol</item>
     <item name="android:textAllCaps">false</item>
   </style>

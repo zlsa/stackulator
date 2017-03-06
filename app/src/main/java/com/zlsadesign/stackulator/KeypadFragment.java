@@ -35,7 +35,6 @@ public class KeypadFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
     View view = inflater.inflate(R.layout.fragment_keypad, container, false);
 
-    ButterKnife.setDebug(true);
     ButterKnife.bind(this, view);
 
     this.initViewPager();
@@ -55,14 +54,12 @@ public class KeypadFragment extends Fragment {
     try {
       this.handleButton(tag);
     } catch(CalculatorException e) {
-      Toast.makeText(getContext(), e.toString(getContext()), Toast.LENGTH_LONG).show();
+      ((MainActivity) this.getActivity()).setError(e);
     }
 
   }
 
   private void handleButton(String tag) throws CalculatorException {
-
-    Log.d("KeypadFragment", "tag: " + tag);
 
     int type = Operation.toOperationType(tag);
 
@@ -74,7 +71,7 @@ public class KeypadFragment extends Fragment {
         break;
 
       default:
-        this.calculator_manager.operation(type);
+        this.calculator_manager.operation(tag);
 
     }
 
@@ -85,23 +82,25 @@ public class KeypadFragment extends Fragment {
     switch(tag) {
       case "push":
         this.calculator_manager.push();
-        break;
+        return;
       case "backspace":
         this.calculator_manager.backspace();
-        break;
+        return;
       case "edit":
         this.calculator_manager.toggleEdit();
-        break;
+        return;
       case ".":
         this.calculator_manager.append(".");
-        break;
+        return;
       case "invert":
         this.calculator_manager.invert();
-        break;
+        return;
     }
 
     if(NUMBERS.contains(tag)) {
       this.calculator_manager.append(tag);
+    } else {
+      this.calculator_manager.operation(tag);
     }
 
   }
@@ -124,6 +123,7 @@ public class KeypadFragment extends Fragment {
 
     @Override
     public float getPageWidth(int position) {
+      if(position == 1) return (float) 0.75;
       return (float) 0.95;
     }
 
