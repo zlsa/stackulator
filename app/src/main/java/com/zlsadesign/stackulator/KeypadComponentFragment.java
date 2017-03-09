@@ -30,7 +30,7 @@ public class KeypadComponentFragment extends Fragment implements View.OnClickLis
 
   }
 
-  public KeypadComponentFragment(KeypadFragment fragment, int position) {
+  public void init(KeypadFragment fragment, int position) {
     this.fragment = fragment;
     this.position = position;
   }

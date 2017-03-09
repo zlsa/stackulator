@@ -184,7 +184,9 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     @Override
     public Fragment getItem(int position) {
-      Fragment fragment = new KeypadComponentFragment(keypad, position);
+      Fragment fragment = new KeypadComponentFragment();
+
+      ((KeypadComponentFragment) fragment).init(keypad, position);
 
       if(position == 0)
         keypad_primary = (KeypadComponentFragment) fragment;
