@@ -1,0 +1,11 @@
+<resources>
+  <string name="aboutpage_info_app_version">Version</string>
+  <string name="aboutpage_action_send_feedback">Send Feedback</string>
+
+  <string name="aboutpage_info_libraries">Libraries</string>
+
+  <string name="aboutpage_library_entry_title">%1$s - %2$s</string>
+
+  <string name="aboutpage_license_apache_20_name">Apache License 2.0</string>
+  <string name="aboutpage_license_lgpl_21_name">LGPL 2.1</string>
+</resources>

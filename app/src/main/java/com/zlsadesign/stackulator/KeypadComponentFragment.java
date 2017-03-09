@@ -1,6 +1,7 @@
 package com.zlsadesign.stackulator;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,10 @@ import butterknife.ButterKnife;
 public class KeypadComponentFragment extends Fragment implements View.OnClickListener {
 
   private KeypadFragment fragment;
+
+  @Nullable
+  @BindView(R.id.operation_drop)
+  View drop_button;
 
   @BindView(R.id.keypad)
   View keypad;
@@ -59,6 +64,19 @@ public class KeypadComponentFragment extends Fragment implements View.OnClickLis
     ViewGroup view = (ViewGroup) inflater.inflate(this.getLayout(), container, false);
 
     ButterKnife.bind(this, view);
+
+    if(this.position == 0 && this.drop_button != null) {
+
+      View.OnLongClickListener listener = new View.OnLongClickListener() {
+        public boolean onLongClick(View v) {
+          fragment.onButtonLongClick(v);
+          return true;
+        }
+      };
+
+      this.drop_button.setOnLongClickListener(listener);
+
+    }
 
     this.keypad.setOnClickListener(this);
     this.scrim.setOnClickListener(this);

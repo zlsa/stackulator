@@ -16,9 +16,7 @@
     android:orientation="horizontal"
 
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-
-    android:layout_weight="0.8"
+    android:layout_height="@dimen/keypad_secondary_buttons_height"
     >
 
     <Button
@@ -28,6 +26,7 @@
       />
 
     <Button
+      android:id="@+id/operation_drop"
       android:text="@string/operation_drop"
       android:tag="drop"
       style="@style/AppTheme.ButtonSecondary.Horizontal"
@@ -206,14 +205,12 @@
       <ImageButton
         android:src="@drawable/ic_edit"
         android:tag="edit"
-        android:alpha="0.3"
         style="@style/AppTheme.ButtonOperator.Symbol"
         />
 
       <ImageButton
         android:src="@drawable/ic_backspace"
         android:tag="backspace"
-        android:alpha="0.3"
         style="@style/AppTheme.ButtonOperator.Symbol"
         />
 

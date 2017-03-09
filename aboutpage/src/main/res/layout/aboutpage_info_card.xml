@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+
+  android:id="@+id/aboutpage_info_card"
+
+  android:background="@drawable/aboutpage_info_card_light"
+
+  android:clipToPadding="false"
+  android:elevation="2dp"
+
+  android:layout_margin="4dp"
+
+  android:orientation="vertical"
+
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+
+  android:paddingTop="4dp"
+  android:paddingBottom="4dp"
+  >
+
+</LinearLayout>

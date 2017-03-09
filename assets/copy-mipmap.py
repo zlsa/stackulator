@@ -55,5 +55,6 @@ def export_icons(icons):
 
 if __name__ == '__main__':
   export_icons([
-    ['ic_launcher', 'icons/ic_launcher']
+    ['ic_launcher', 'icons/ic_launcher'],
+    ['ic_launcher_large', 'icons/ic_launcher_large']
   ])

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+
+  android:layout_width="match_parent"
+  android:layout_height="@dimen/aboutpage_info_entry_header_height"
+
+  android:orientation="horizontal"
+  >
+
+  <TextView
+    android:id="@+id/aboutpage_entry_header"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:layout_gravity="center|start"
+
+    android:layout_marginStart="@dimen/aboutpage_info_entry_text_margin_start"
+
+    style="@style/AboutPage.TextAppearance.InfoCardEntry.Header"
+    />
+
+</LinearLayout>

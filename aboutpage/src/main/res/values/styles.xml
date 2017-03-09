@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="AboutPage.Light" parent="@android:style/Theme.Material.Light.NoActionBar">
+    <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+  </style>
+
+  <style name="AboutPage.Dark" parent="@android:style/Theme.Material.NoActionBar">
+    <item name="android:statusBarColor">?attr/colorPrimaryDark</item>
+  </style>
+
+  <style name="AboutPage.TextAppearance.InfoCardEntry" parent="@android:style/TextAppearance.Material">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textColor">?android:attr/textColorPrimary</item>
+  </style>
+
+  <style name="AboutPage.TextAppearance.InfoCardEntry.Header" parent="AboutPage.TextAppearance.InfoCardEntry">
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">?android:attr/textColorSecondary</item>
+  </style>
+
+  <style name="AboutPage.TextAppearance.InfoCardEntry.AppName" parent="AboutPage.TextAppearance.InfoCardEntry">
+    <item name="android:textSize">20sp</item>
+  </style>
+
+  <style name="AboutPage.TextAppearance.InfoCardEntry.Title" parent="AboutPage.TextAppearance.InfoCardEntry">
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="AboutPage.TextAppearance.InfoCardEntry.Secondary" parent="AboutPage.TextAppearance.InfoCardEntry">
+    <item name="android:textSize">12sp</item>
+    <item name="android:textColor">?android:attr/textColorSecondary</item>
+  </style>
+
+</resources>

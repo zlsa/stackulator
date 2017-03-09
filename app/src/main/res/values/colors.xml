@@ -19,46 +19,46 @@
 
   <color name="white">#FFFFFF</color>
 
-  <color name="text_primary">#FFFFFF</color>
-  <color name="text_secondary">#80FFFFFF</color>
 
   -->
   <color name="primary">#43A047</color>
   <color name="primary_dark">#2E7D32</color>
   <color name="accent">#FF5722</color>
 
-  <color name="background">#FAFAFA</color>
+  <color name="background">#303030</color>
 
-  <color name="background_secondary">#F4F4F4</color>
+  <color name="background_secondary">#363636</color>
+
+  <color name="toolbar_background">#212121</color>
 
   <color name="transparent">#00000000</color>
   <color name="pane_covered">#80000000</color>
 
-  <color name="ripple">#40000000</color>
+  <color name="ripple">#40FFFFFF</color>
 
-  <color name="statusbar">@color/primary</color>
+  <color name="statusbar">@color/primary_dark</color>
 
   <color name="black">#000000</color>
 
   <color name="white">#FFFFFF</color>
 
-  <color name="text_primary">#DD000000</color>
-  <color name="text_secondary">#88000000</color>
+  <color name="text_primary">#FFFFFF</color>
+  <color name="text_secondary">#80FFFFFF</color>
 
-  <color name="text_operator">#60000000</color>
+  <color name="text_operator">#60FFFFFF</color>
 
-  <color name="stack_item_text">#30000000</color>
+  <color name="stack_item_text">#30FFFFFF</color>
 
-  <color name="stack_item_top_background">#EEEEEE</color>
-  <color name="stack_item_top_minus_one_background">#F5F5F5</color>
+  <color name="stack_item_top_background">#393939</color>
+  <color name="stack_item_top_minus_one_background">#343434</color>
 
-  <color name="stack_item_top_text">#7A000000</color>
-  <color name="stack_item_top_minus_one_text">#66000000</color>
+  <color name="stack_item_top_text">#7AFFFFFF</color>
+  <color name="stack_item_top_minus_one_text">#66FFFFFF</color>
 
-  <color name="stack_item_editing_background">#E0E0E0</color>
-  <color name="stack_item_editing_text">@color/black</color>
+  <color name="stack_item_editing_background">#454545</color>
+  <color name="stack_item_editing_text">@color/white</color>
 
-  <color name="stack_item_in_progress_text">#30000000</color>
+  <color name="stack_item_in_progress_text">#30FFFFFF</color>
 
   <color name="keypad_secondary_background">#43A047</color>
   <color name="keypad_secondary_text">#FFFFFF</color>

@@ -15,10 +15,11 @@ public class Operation {
 
   public static final int PUSH = 1;
   public static final int POP = 2;
+  public static final int CLEAR = 3;
+  public static final int DUPLICATE = 6;
 
 
   public static final int SWAP = 5;
-  public static final int DUPLICATE = 6;
 
 
   public static final int ADD = 10;
@@ -72,6 +73,8 @@ public class Operation {
         return POP;
       case "duplicate":
         return DUPLICATE;
+      case "clear":
+        return CLEAR;
 
 
       case "add":

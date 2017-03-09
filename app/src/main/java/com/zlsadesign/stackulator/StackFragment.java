@@ -1,20 +1,23 @@
 package com.zlsadesign.stackulator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StackFragment extends Fragment {
 
@@ -36,8 +39,36 @@ public class StackFragment extends Fragment {
   private boolean snackbar_hidden = false;
   private long last_error_time;
 
+  public StackFragment() {
+  }
+
   public void setCalculatorManager(CalculatorManager calculator_manager) {
     this.calculator_manager = calculator_manager;
+  }
+
+  @OnClick(R.id.menu_button)
+  public void onMenuButtonClick(View v) {
+    PopupMenu popup = new PopupMenu(getContext(), v);
+
+    popup.getMenuInflater().inflate(R.menu.menu_main, popup.getMenu());
+    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+      public boolean onMenuItemClick(MenuItem item) {
+        int id = item.getItemId();
+
+        switch(id) {
+          case R.id.about:
+            Intent intent = new Intent(getContext(), AboutActivity.class);
+            startActivity(intent);
+            break;
+        }
+
+        return true;
+      }
+
+    });
+
+    popup.show();
   }
 
   @Override

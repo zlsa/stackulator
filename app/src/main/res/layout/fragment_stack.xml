@@ -38,4 +38,23 @@
     android:textColor="@color/white"
     />
 
+  <ImageButton
+    android:background="@null"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+
+    android:clipToPadding="false"
+
+    android:src="@drawable/ic_menu"
+
+    android:id="@+id/menu_button"
+
+    android:layout_width="@dimen/menu_button_size"
+    android:layout_height="@dimen/menu_button_size"
+
+    android:layout_gravity="top|end"
+
+    android:alpha="0.54"
+    android:tint="@color/text_primary"
+    />
+
 </FrameLayout>

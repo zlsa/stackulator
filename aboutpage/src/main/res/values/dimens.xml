@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- Toolbar elevation-->
+
+  <dimen name="aboutpage_toolbar_elevation">4dp</dimen>
+
+  <dimen name="aboutpage_info_entry_text_margin_start">72dp</dimen>
+  <dimen name="aboutpage_info_entry_icon_margin_start">24dp</dimen>
+  <dimen name="aboutpage_info_entry_margin_end">16dp</dimen>
+  <dimen name="aboutpage_info_entry_height">56dp</dimen>
+
+  <dimen name="aboutpage_info_entry_header_height">40dp</dimen>
+
+</resources>

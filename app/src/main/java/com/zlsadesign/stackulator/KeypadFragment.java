@@ -1,5 +1,6 @@
 package com.zlsadesign.stackulator;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -62,6 +63,17 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
   }
 
+  public void onButtonLongClick(View view) {
+    String tag = view.getTag().toString();
+
+    try {
+      this.handleButtonSecondary(tag);
+    } catch(CalculatorException e) {
+      ((MainActivity) this.getActivity()).setError(e);
+    }
+
+  }
+
   private void handleButton(String tag) throws CalculatorException {
 
     int type = Operation.toOperationType(tag);
@@ -75,6 +87,20 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
       default:
         this.calculator_manager.operation(tag);
+
+    }
+
+  }
+
+  private void handleButtonSecondary(String tag) throws CalculatorException {
+
+    int type = Operation.toOperationType(tag);
+
+    switch(type) {
+
+      case Operation.POP:
+        this.calculator_manager.operation(Operation.CLEAR);
+        break;
 
     }
 
@@ -175,9 +201,12 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
     @Override
     public float getPageWidth(int position) {
-      if(this.keypad.getView().getWidth() > 480) {
-        return (float) 0.5;
-      }
+      float density = Resources.getSystem().getDisplayMetrics().density;
+      float width = Resources.getSystem().getDisplayMetrics().widthPixels / density;
+
+      //if(width > 480) {
+      //return (float) 0.5;
+      //}
 
       if(position == 1) return (float) 0.75;
       return (float) 0.95;

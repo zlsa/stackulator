@@ -43,8 +43,8 @@ public class Calculator {
 
   private CalculatorListener listener = null;
 
-  private Handler handler;
   private Runnable run_operation_queue;
+  private Thread thread;
 
   public Calculator() {
 
@@ -476,6 +476,10 @@ public class Calculator {
         case Operation.POP:
           this.pop();
           break;
+        case Operation.CLEAR:
+          this.stack.clear();
+          this.undo_stack.clear();
+          break;
         case Operation.DUPLICATE:
           this.push(this.peek());
           break;
@@ -503,13 +507,13 @@ public class Calculator {
 
         case Operation.RECIPROCAL:
           this.push("1");
-          this.operation(Operation.SWAP);
-          this.operation(Operation.DIVIDE);
+          this.swap();
+          this.divide();
           break;
         case Operation.SQUARE:
           this.push("2");
           try {
-            this.operation(Operation.POWER);
+            this.power();
           } catch(CalculatorException e) {
             // Clean up our mess
             this.pop();
@@ -607,8 +611,8 @@ public class Calculator {
 
     this.operation_queue_running = true;
 
-    this.handler = new Handler();
-    this.handler.post(this.run_operation_queue);
+    this.thread = new Thread(this.run_operation_queue);
+    this.thread.start();
   }
 
   // Performs a simple operation.
@@ -641,8 +645,8 @@ public class Calculator {
 
   public void destroy() {
 
-    if(this.handler != null) {
-      this.handler.removeCallbacks(this.run_operation_queue);
+    if(this.thread != null) {
+      this.thread.interrupt();
     }
 
   }

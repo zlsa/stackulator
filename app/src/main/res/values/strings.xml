@@ -1,6 +1,19 @@
 <resources>
   <string name="app_name">Stackulator</string>
 
+  <string name="action_about">About</string>
+
+
+  <string name="info_version">Version</string>
+
+  <string name="action_view_changelog">Changelog</string>
+  <string name="action_view_licenses">Licenses</string>
+  <string name="action_send_feedback">Send Feedback</string>
+
+
+  <string name="info_author">Author</string>
+
+
   <string name="operation_add_symbol">+</string>
   <string name="operation_subtract_symbol">-</string>
   <string name="operation_multiply_symbol">×</string>
@@ -71,7 +84,7 @@
   <string name="edit_backspace">Backspace</string>
   <string name="edit_push">Push</string>
 
-  <string name="identifier_none" />
+  <string name="identifier_none"/>
   <string name="identifier_top">x</string>
   <string name="identifier_top_minus_one">y</string>
 
