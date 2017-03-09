@@ -1,0 +1,59 @@
+
+@import 'color';
+@import 'metrics';
+
+$apps-bar-height: 64px;
+$app-icon-size: 48px;
+
+#all-apps {
+  background-color: #212121;
+  min-height: $apps-bar-height;
+
+  width: 100%;
+  
+  ul {
+    height: 100%;
+    margin: 0 auto;
+    
+    max-width: $max-width;
+  }
+
+  .app {
+
+    display: inline-block;
+    height: $apps-bar-height;
+
+    margin-right: 16px;
+
+    a {
+
+      display: block;
+      height: 100%;
+
+      position: relative;
+
+      display: flex;
+
+      .icon {
+        align-self: center;
+        width: $app-icon-size;
+      }
+
+      .name {
+        align-self: center;
+        
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        
+        margin-left: 8px;
+        margin-right: 16px;
+      }
+
+    }
+
+  }
+  
+}
+

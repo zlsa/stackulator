@@ -3,13 +3,13 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.zlsadesign.stackulator"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
-        versionName "0.0.1"
+        versionName "0.1.0 alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
