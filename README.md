@@ -1,7 +1,9 @@
 
 # Stackulator
 
-Minimal postfix calculator for Android. [Download the latest version here](https://github.com/zlsa/stackulator/releases/latest).
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.zlsadesign.stackulator)
+
+Minimal postfix calculator for Android.
 
 ![Screenshot of the main screen](images/promotional/screenshot.png)
 
@@ -9,7 +11,7 @@ Open new [issues](https://github.com/zlsa/stackulator/issues/) when you
 find bugs or have feature suggestions, or email me at
 [jonross.zlsa@gmail.com](jonross.zlsa@gmail.com?subject=Stackulator).
 
-# Installing
+# Installing the APK directly
 
 1. Go to your phone's Settings app and open the Security settings.
 2. Enable Unknown sources. Click "OK". (It only needs to be enabled to install Autogyro; you can disable it immediately afterwards if you want.)
