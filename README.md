@@ -1,7 +1,7 @@
 
 # Stackulator
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.zlsadesign.stackulator)
+[![Get it on Google Play](images/play_link.png)](https://play.google.com/store/apps/details?id=com.zlsadesign.stackulator)
 
 Minimal postfix calculator for Android.
 
