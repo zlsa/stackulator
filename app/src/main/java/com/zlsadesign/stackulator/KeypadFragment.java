@@ -44,6 +44,10 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
     return view;
   }
 
+  public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+  }
+
   private void initViewPager() {
     this.adapter = new KeypadAdapter(this, getFragmentManager());
     this.pager.setAdapter(this.adapter);
@@ -145,9 +149,11 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
     if(this.keypad_primary == null || this.keypad_secondary == null) return;
 
     if(position == 0) {
+      Log.d("KeypadFragment", "Primary page selected");
       this.keypad_primary.setEnabled(true);
       this.keypad_secondary.setEnabled(false);
     } else {
+      Log.d("KeypadFragment", "Secondary page selected");
       this.keypad_primary.setEnabled(false);
       this.keypad_secondary.setEnabled(true);
     }
@@ -156,6 +162,7 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
   @Override
   public void onPageScrollStateChanged(int state) {
+    Log.d("KeypadFragment", "scroll state: " + state);
     /*
     switch(state) {
       case ViewPager.SCROLL_STATE_DRAGGING:
@@ -188,10 +195,11 @@ public class KeypadFragment extends Fragment implements ViewPager.OnPageChangeLi
 
       ((KeypadComponentFragment) fragment).init(keypad, position);
 
-      if(position == 0)
+      if(position == 0) {
         keypad_primary = (KeypadComponentFragment) fragment;
-      else
+      } else {
         keypad_secondary = (KeypadComponentFragment) fragment;
+      }
 
       return fragment;
     }

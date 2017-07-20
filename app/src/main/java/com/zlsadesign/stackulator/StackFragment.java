@@ -38,12 +38,18 @@ public class StackFragment extends Fragment {
 
   private boolean snackbar_hidden = false;
   private long last_error_time;
+  private SettableTheme settable_theme;
+  private MainActivity main_activity;
 
   public StackFragment() {
   }
 
   public void setCalculatorManager(CalculatorManager calculator_manager) {
     this.calculator_manager = calculator_manager;
+  }
+
+  public void setSettableTheme(SettableTheme settable_theme) {
+    this.settable_theme = settable_theme;
   }
 
   @OnClick(R.id.menu_button)
@@ -56,11 +62,18 @@ public class StackFragment extends Fragment {
       public boolean onMenuItemClick(MenuItem item) {
         int id = item.getItemId();
 
+        Intent intent;
+
         switch(id) {
           case R.id.about:
-            Intent intent = new Intent(getContext(), AboutActivity.class);
+            intent = new Intent(getContext(), AboutActivity.class);
             startActivity(intent);
             break;
+          /*
+          case R.id.dark_theme:
+            main_activity.toggleTheme();
+            break;
+            */
         }
 
         return true;
@@ -153,5 +166,8 @@ public class StackFragment extends Fragment {
 
   }
 
+  public void setMainActivity(MainActivity main_activity) {
+    this.main_activity = main_activity;
+  }
 }
 

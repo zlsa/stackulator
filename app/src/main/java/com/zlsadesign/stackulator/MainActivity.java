@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
   protected void onCreate(Bundle state) {
     super.onCreate(state);
 
+    this.applyTheme();
+
     setContentView(R.layout.activity_main);
 
     ButterKnife.bind(this);
@@ -43,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
 
     this.initKeypad();
     this.initStack();
+  }
+
+  private void applyTheme() {
+    //setTheme(R.style.AppTheme_Light);
   }
 
   protected void onStop() {
@@ -94,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
 
     this.stack_fragment = new StackFragment();
     this.stack_fragment.setCalculatorManager(this.calculator_manager);
+    this.stack_fragment.setMainActivity(this);
 
     transaction.replace(R.id.stack_frame, this.stack_fragment);
     transaction.commit();
@@ -147,6 +155,10 @@ public class MainActivity extends AppCompatActivity implements CalculatorListene
       }
     });
 
+  }
+
+  public void toggleTheme() {
+    Log.d("MainActivity", "toggling theme");
   }
 
 }

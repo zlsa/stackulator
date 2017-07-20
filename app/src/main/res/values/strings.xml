@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">Stackulator</string>
 
+  <string name="action_dark_theme">Dark Theme</string>
   <string name="action_about">About</string>
 
 

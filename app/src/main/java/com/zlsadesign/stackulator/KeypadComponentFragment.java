@@ -3,6 +3,7 @@ package com.zlsadesign.stackulator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,11 +82,14 @@ public class KeypadComponentFragment extends Fragment implements View.OnClickLis
     this.keypad.setOnClickListener(this);
     this.scrim.setOnClickListener(this);
 
+    this.scrim.setClickable(false);
+
     return view;
   }
 
   @Override
   public void onClick(View v) {
+    Log.d("KeypadComponentFragment", "onclick");
     this.fragment.swap();
   }
 

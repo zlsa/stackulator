@@ -92,7 +92,14 @@ public class AboutActivity extends com.zlsadesign.aboutpage.AboutActivity {
                 new InfoCardTwoLineEntry.Builder()
                     .withTitle("Autogyro")
                     .withIcon(R.drawable.ic_android)
-                    .withUrl("http://zlsadesign.com/autogyro/")
+                    .withUrl("https://zlsadesign.com/app/autogyro/")
+                    .build())
+
+            .addEntry(
+                new InfoCardTwoLineEntry.Builder()
+                    .withTitle("Speedometer")
+                    .withIcon(R.drawable.ic_android)
+                    .withUrl("https://zlsadesign.com/app/speedometer/")
                     .build())
 
             .build()
