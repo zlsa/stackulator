@@ -1,5 +1,7 @@
 package com.zlsadesign.aboutpage;
 
+import android.content.pm.PackageManager;
+
 public class AppVersionEntry extends InfoCardTwoLineEntry {
 
   protected String app_version = null;
@@ -14,7 +16,7 @@ public class AppVersionEntry extends InfoCardTwoLineEntry {
     if(this.app_version != null) {
       version_name = this.app_version;
     } else {
-      version_name = BuildConfig.VERSION_NAME;
+      version_name = "???";
     }
 
     this.secondary_view.setText(version_name);

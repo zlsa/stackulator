@@ -33,6 +33,7 @@ public class AboutActivity extends com.zlsadesign.aboutpage.AboutActivity {
 
             .addEntry(
                 new AppVersionEntry.Builder()
+                    .withVersion(BuildConfig.VERSION_NAME)
                     .build())
 
             .addEntry(
